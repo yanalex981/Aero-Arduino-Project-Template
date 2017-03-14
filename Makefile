@@ -71,14 +71,14 @@ EXTRA_OBJS := Adafruit_9DOF.cpp.o Adafruit_BMP085.cpp.o Adafruit_IMU.cpp.o Adafr
 INC_FILES := $(addprefix -I,$(ARD_CORE) $(ARD_BOARD) $(ADAFRUIT) $(Wire))
 INC_FILES += $(addprefix -I,$(addsuffix /utility,$(Ethernet) $(Robot_Control) $(SD) $(TFT) $(WiFi) $(Wire)))
 
-##### begin voodoo magic #####
+##### begin DO NOT MODIFY UNLESS YOU KNOW WHAT THE FLAGS DO #####
 firmware.hex: firmware.elf
 	$(OBJ_COPY) -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0 firmware.elf firmware.eep
 	$(OBJ_COPY) -O ihex -R .eeprom firmware.elf firmware.hex
 
 firmware.elf: $(ARD_CORE_CPP) $(ARD_CORE_C) $(MAIN_SKETCH).o $(EXTRA_OBJS) Wire.cpp.o twi.c.o
 	$(CC) -Os -Wl,--gc-sections -mmcu=$(MCU) -o firmware.elf $^ -lm
-#####  end voodoo magic  #####
+#####  end DO NOT MODIFY UNLESS YOU KNOW WHAT THE FLAGS DO  #####
 
 upload:
 	python reset.py

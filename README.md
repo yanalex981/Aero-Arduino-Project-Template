@@ -10,10 +10,13 @@ Most of the build process was discovered via the Arduino IDE with sample project
 
 ## Usage
 
-1. Create .cpp/.c files as expected of C/C++ projects
-2. Include `Arduino.h` at the top of the main source file
-3. Point `PORT` to the serial port in which the Arduino is connected to
-4. Point the `MAIN_SKETCH` variable to the main source file
-5. Add any object dependencies to `EXTRA_OBJS`
+### Variables
 
-If needed, change `ARD_BOARD` to match the target Arduino board. `make` to builds the project, and `make upload` uploads the compiled binary to the connected Arduino
+`PORT`: serial port in which the target Arduino is connected to
+`MAIN_SKETCH`: file name of the main source file
+`EXTRA_OBJS`: extra project object dependencies
+`ARD_BOARD`: target Arduino board type (standard, micro, etc)
+
+Make sure `Arduino.h` is included at the top of the main source file.
+
+`make` to builds the project, and `make upload` uploads the compiled project to the connected Arduino.

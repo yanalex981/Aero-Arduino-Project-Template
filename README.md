@@ -1,12 +1,12 @@
 ## About
 
-A Raspberry Pi is onboard the plane, reading from sensors, and relaying data back to the ground station.
+This project serves as a template for Arduino projects that cannot rely on a GUI environment (Arduino IDE) in order to compile.
 
-The quickest way to access the Pi once it's installed inside the plane is with SSH through the radios. No GUIs are available, and existing solutions doesn't seem to work with our Arduino projects.
+The quickest way to access the Pi once it's installed inside the plane is with SSH through the radios. No GUIs are available, and existing solutions doesn't seem to work with Aero's Arduino projects.
 
-Most of the programmers on the team is familiar with GNU Make, and so was chosen as the project's build tool.
+Most of the programmers on the team is familiar with GNU Make, and so was chosen as the build tool.
 
-Most of the build process was discovered via the Arduino IDE with sample projects.
+Most of the build process was discovered via the Arduino IDE with sample projects. The reset process for Arduino Micros were discovered by online  documentation and forum posts.
 
 ## Usage
 
@@ -16,4 +16,4 @@ Most of the build process was discovered via the Arduino IDE with sample project
 4. Point the `MAIN_SKETCH` variable to the main source file
 5. Add any object dependencies to `EXTRA_OBJS`
 
-`make` to build the project, and `make upload` to upload to the connected Arduino
+If needed, change `ARD_BOARD` to match the target Arduino board. `make` to builds the project, and `make upload` uploads the compiled binary to the connected Arduino
